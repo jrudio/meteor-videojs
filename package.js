@@ -5,10 +5,6 @@ Package.describe({
   git: 'https://github.com/jrudio/meteor-videojs.git'
 });
 
-Npm.depends({
-  path: "0.4.9"
-});
-
 Package.onUse(function(api) {
   api.versionsFrom('WINDOWS-PREVIEW@0.0.8');
   api.use('jquery', 'client');
