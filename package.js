@@ -1,7 +1,7 @@
 Package.describe({
   name: 'jrudio:videojs',
   summary: 'A meteor package to for VideoJS',
-  version: '4.10.2',
+  version: '4.10.2_2',
   git: 'https://github.com/jrudio/meteor-videojs.git'
 });
 
