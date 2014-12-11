@@ -1,12 +1,12 @@
 Package.describe({
   name: 'jrudio:videojs',
   summary: 'A meteor package to for VideoJS',
-  version: '4.10.2_2',
+  version: '4.11.1',
   git: 'https://github.com/jrudio/meteor-videojs.git'
 });
 
 Package.onUse(function(api) {
-  api.versionsFrom('WINDOWS-PREVIEW@0.0.8');
+  api.versionsFrom('WINDOWS-PREVIEW@0.0.10');
   api.use('jquery', 'client');
 
   var path = Npm.require('path');
