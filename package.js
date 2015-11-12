@@ -1,28 +1,66 @@
 Package.describe({
   name: 'jrudio:videojs',
-  summary: 'VideoJS v4.12.7',
-  version: '4.12.7',
+  summary: 'VideoJS v5.2.0',
+  version: '5.2.0',
   git: 'https://github.com/jrudio/meteor-videojs.git'
-});
+})
 
 Package.onUse(function(api) {
-  api.versionsFrom('WINDOWS-PREVIEW@0.0.10');
-  api.use('jquery', 'client');
+  api.versionsFrom('1.2.1')
 
-  var path = Npm.require('path');
+  api.use('jquery', 'client')
 
-  var assetPath = path.join('videojs');
+  const npmPath = Npm.require('path')
+
+  const client = {
+    arch: 'client',
+    files: [],
+    add: function (basePath) {
+      var args = Array.prototype.slice.call(arguments, 1)
+
+      arguments = basePath.concat(args)
+
+      var _path = npmPath.join.apply(npmPath, arguments)
+
+      this.files.push(_path)
+
+      return this
+    }
+  }
+
+  const assets = {
+    arch: 'client',
+    files: [],
+    add: function (basePath) {
+      var args = Array.prototype.slice.call(arguments, 1)
+
+      arguments = basePath.concat(args)
+
+      var _path = npmPath.join.apply(npmPath, arguments)
+
+      this.files.push(_path)
+
+      return this
+    }
+  }
 
   // Library
-  api.addFiles(path.join(assetPath, 'lib', 'video-js.min.css'), 'client');
-  api.addFiles(path.join(assetPath, 'lib', 'video.js'), 'client');
-  api.addFiles(path.join(assetPath, 'lib', 'video-js.swf'), 'client');
+  const baseLibPath = ['videojs', 'lib']
 
-  // Fonts
-  api.addFiles(path.join(assetPath, 'fonts', 'vjs.eot'), 'client', { isAsset: true });
-  api.addFiles(path.join(assetPath, 'fonts', 'vjs.svg'), 'client', { isAsset: true });
-  api.addFiles(path.join(assetPath, 'fonts', 'vjs.ttf'), 'client', { isAsset: true });
-  api.addFiles(path.join(assetPath, 'fonts', 'vjs.woff'), 'client', { isAsset: true });
+  client.add(baseLibPath, 'video-js.min.css')
+  client.add(baseLibPath, 'video.min.js')
 
-  api.addFiles(path.join('video-js-override.css'), 'client');
-});
+  // Assets
+  const baseAssetPath = ['videojs', 'fonts']
+
+  assets.add(baseLibPath, 'video.min.js.map')
+  assets.add(baseLibPath, 'video-js.swf')
+  assets.add(baseAssetPath, 'VideoJS.eot')
+  assets.add(baseAssetPath, 'VideoJS.svg')
+  assets.add(baseAssetPath, 'VideoJS.ttf')
+  assets.add(baseAssetPath, 'VideoJS.woff')
+
+  api.addFiles(client.files, client.arch)
+  api.addFiles('video-js-override.css', 'client')
+  api.addAssets(assets.files, assets.arch)
+})
