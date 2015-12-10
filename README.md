@@ -1,6 +1,6 @@
 meteor-videojs
 ==============
-v5.2.0
+v5.4.4
 A meteor package for videoJS
 
     meteor add jrudio:videojs
