@@ -1,7 +1,7 @@
 Package.describe({
   name: 'jrudio:videojs',
-  summary: 'VideoJS v5.2.0',
-  version: '5.2.0',
+  summary: 'VideoJS v5.4.4',
+  version: '5.4.4',
   git: 'https://github.com/jrudio/meteor-videojs.git'
 })
 
