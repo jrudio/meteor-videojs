@@ -1,8 +1,8 @@
 Package.describe({
-  name: 'jrudio:videojs',
-  summary: 'VideoJS v5.4.4',
-  version: '5.4.4',
-  git: 'https://github.com/jrudio/meteor-videojs.git'
+  name: 'lifefilm:videojs',
+  summary: 'VideoJS v5.10.4',
+  version: '5.10.4',
+  git: 'https://github.com/fortunto2/meteor-videojs.git'
 })
 
 Package.onUse(function(api) {
